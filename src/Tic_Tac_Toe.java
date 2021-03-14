@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Tic_Tac_Toe {
     public static void main(String[] args) {
         String cells = "         ";
-        int turns = 1;
+        int turns = 1;//奇X偶O
         paint(cells);
 
         play(cells, turns);
@@ -49,7 +49,6 @@ public class Tic_Tac_Toe {
             }
         }
         System.out.println("---------");
-        System.out.println("cells:" + cells);
         return cells;
     }
 
@@ -98,13 +97,15 @@ public class Tic_Tac_Toe {
     static void play(String cells, int turns) {
         Scanner scan = new Scanner(System.in);
         while (true) {
+            String coordinate;
             int coordinateX;
             int coordinateY;
             int marks;
             System.out.print("Enter the coordinates: ");
             if (scan.hasNextInt()) {
-                coordinateX = scan.nextInt();
-                coordinateY = scan.nextInt();
+                coordinate = scan.nextLine();
+                coordinateX = (coordinate.charAt(0) - '0');
+                coordinateY = (coordinate.charAt(2) - '0');
                 marks = (coordinateX - 1) * 3 + (coordinateY - 1);
                 if (coordinateX > 3 || coordinateX < 0 || coordinateY > 3 || coordinateY < 0) {
                     System.out.println("Coordinates should be form 1 to 3!");
@@ -150,9 +151,7 @@ public class Tic_Tac_Toe {
             } else {
                 System.out.println("You should enter numbers!");
                 scan.nextLine();
-                scan.nextLine();
             }
         }
-
     }
 }
